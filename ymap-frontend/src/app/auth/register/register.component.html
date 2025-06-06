@@ -1,0 +1,38 @@
+<form (ngSubmit)="register()">
+  <div
+    class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+  >
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl w-96 shadow-xl">
+      <h2 class="text-xl font-bold mb-4 text-center">Регистрация</h2>
+
+      <input
+        [(ngModel)]="username"
+        name="username"
+        placeholder="Имя пользователя"
+        class="p-2 input mb-4 w-full dark:bg-gray-800 dark:text-white border border-black dark:border-white rounded-xl"
+        required
+      />
+
+      <input
+        [(ngModel)]="password"
+        name="password"
+        type="password"
+        placeholder="Пароль"
+        class="p-2 input mb-4 w-full dark:bg-gray-800 dark:text-white border border-black dark:border-white rounded-xl"
+        required
+      />
+
+      <button type="submit" class="btn w-full">Зарегистрироваться</button>
+
+      <button
+        type="button"
+        (click)="onCancel()"
+        class="mt-4 text-sm text-gray-500 hover:underline w-full"
+      >
+        Закрыть
+      </button>
+
+      <div *ngIf="error" class="text-red-500 text-sm mt-2">{{ error }}</div>
+    </div>
+  </div>
+</form>

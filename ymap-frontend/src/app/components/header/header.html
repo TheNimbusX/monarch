@@ -1,0 +1,38 @@
+<header
+  class="transition-all duration-300 fixed top-0 w-full px-6 py-4 flex justify-between items-center bg-white dark:bg-gray-900 shadow-md z-50"
+>
+  <div class="logo text-2xl font-bold">Monarch-YMap</div>
+  <div class="flex items-center space-x-4">
+    <ng-container *ngIf="authService.isAuthenticated(); else guest">
+      <div class="flex items-center gap-3">
+        <span class="username text-gray-700 dark:text-gray-200"
+          >👤 {{ authService.getUsername() }}</span
+        >
+        <button (click)="logout()" class="btn bg-red-500 text-white">
+          Выйти
+        </button>
+      </div>
+    </ng-container>
+
+    <ng-template #guest>
+      <div class="flex gap-2">
+        <a
+          routerLink="/login"
+          (click)="openAuth('login')"
+          class="btn bg-blue-500 text-white"
+          >Войти</a
+        >
+        <a
+          routerLink="/register"
+          (click)="openAuth('register')"
+          class="btn bg-green-500 text-white"
+          >Регистрация</a
+        >
+      </div>
+    </ng-template>
+    <button (click)="toggleTheme()" class="text-xl">
+      <span *ngIf="theme === 'light'">🌞</span>
+      <span *ngIf="theme === 'dark'">🌙</span>
+    </button>
+  </div>
+</header>

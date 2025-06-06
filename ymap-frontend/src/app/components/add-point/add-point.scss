@@ -1,0 +1,19 @@
+.input {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: black;
+}
+
+.dark .input {
+  background-color: #2d3748;
+  color: white;
+  border-color: #4a5568;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+}

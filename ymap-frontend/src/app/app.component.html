@@ -1,0 +1,10 @@
+<app-header
+  (loginClick)="openLogin()"
+  (registerClick)="openRegister()"
+></app-header>
+
+<app-map></app-map>
+
+<app-login *ngIf="showLogin" (close)="closeAuth()"></app-login>
+
+<app-register *ngIf="showRegister" (close)="closeAuth()"></app-register>
