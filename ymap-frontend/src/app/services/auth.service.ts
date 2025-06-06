@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject, tap } from 'rxjs';
+import { environment } from '../../enviroments/enviroment.prod';
 
 interface User {
   id: number;
@@ -12,6 +13,7 @@ interface User {
   providedIn: 'root',
 })
 export class AuthService {
+  private api = environment.apiUrl;
   private tokenKey = 'authToken';
 
   private currentUserSubject = new BehaviorSubject<User | null>(this.loadUserFromStorage());
@@ -29,7 +31,7 @@ export class AuthService {
   }
 
   login(data: { username: string; password: string }) {
-    return this.http.post<any>('/api/login', data).pipe(
+    return this.http.post<any>(`${this.api}/login`, data).pipe(
       tap((response) => {
         const user: User = { id: response.id, username: response.username };
         localStorage.setItem(this.tokenKey, response.token);
@@ -40,7 +42,7 @@ export class AuthService {
   }
 
   register(data: { username: string; password: string }) {
-    return this.http.post('/api/register', data);
+    return this.http.post(`${this.api}/register`, data);
   }
 
   logout() {
@@ -67,6 +69,6 @@ export class AuthService {
   }
 
   getCurrentUser() {
-    return this.http.get<User>('/api/user');
+    return this.http.get<User>(`${this.api}/user`);
   }
 }

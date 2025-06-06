@@ -16,7 +16,9 @@
       "architect": {
         "build": {
           "builder": "@angular/build:application",
+          "outputPath": "dist/ymap-frontend",
           "options": {
+            "baseHref": "/monarch-ymap-front/",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "css",
